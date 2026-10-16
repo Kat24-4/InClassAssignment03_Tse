@@ -55,32 +55,6 @@ int main() {
     cout << endl;
     
     //===================Successor===================
-    // // Case 4: delete a node with TWO children.
-    // // 1. search for value
-    // Node* cur = root;
-    // int key = 25;
-    // while (cur != nullptr && cur->data != key) {
-    //     if (key < cur->data) cur = cur->left;
-    //     else                 cur = cur->right;
-    // }
-    // // 2. find the inorder successor: right once, then left as far as possible
-    // Node* parent = cur;
-    // Node* succ = cur->right; 
-    // while (succ->left != nullptr) {
-    //     parent = succ;
-    //     succ = succ->left;
-    // }
-    // // 3. copy the successor's value into the node
-    // cur->data = succ->data; 
-    // // 4. remove the successor node (it has no left child)
-    // if (parent == cur)
-    //     parent->right = succ->right; 
-    // else
-    //     parent->left = succ->right;
-    // delete succ;
-    //===============================================
-
-    //==================Predecessor==================
     // Case 4: delete a node with TWO children.
     // 1. search for value
     Node* cur = root;
@@ -89,21 +63,21 @@ int main() {
         if (key < cur->data) cur = cur->left;
         else                 cur = cur->right;
     }
-    // 2. find the inorder predecessor: left once, then right as far as possible
+    // 2. find the inorder successor: right once, then left as far as possible
     Node* parent = cur;
-    Node* pred = cur->left; 
-    while (pred->right != nullptr) {
-        parent = pred;
-        pred = pred->right;
+    Node* succ = cur->right; 
+    while (succ->left != nullptr) {
+        parent = succ;
+        succ = succ->left;
     }
-    // 3. copy the predecessor's value into the node
-    cur->data = pred->data; 
-    // 4. remove the predecessor node (it has no right child)
+    // 3. copy the successor's value into the node
+    cur->data = succ->data; 
+    // 4. remove the successor node (it has no left child)
     if (parent == cur)
-        parent->left = pred->left;
+        parent->right = succ->right; 
     else
-        parent->right = pred->left;
-    delete pred;
+        parent->left = succ->right;
+    delete succ;
     //===============================================
 
     cout << "After: ";

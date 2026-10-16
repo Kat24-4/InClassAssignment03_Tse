@@ -72,25 +72,6 @@ int main() {
         parent->left = succ->right; // 60->left = NULL
     delete succ;
     //===============================================
-    
-    //==================Predecessor==================
-    // // Case 1: delete the root (40). It has two children.
-    // // 1. find the inorder predecessor: the largest value in the left subtree
-    // Node* parent = root;
-    // Node* pred = root->left; // go left once (20)
-    // while (pred->right != nullptr) { // then right as far as possible
-    //     parent = pred;
-    //     pred = pred->right; // pred = 30, parent = 20
-    // }
-    // // 2. copy the predecessors's value into the root
-    // root->data = pred->data; // root now holds 30
-    // // 3. remove the predecessor node (it has no right child)
-    // if (parent == root)
-    //     parent->left = pred->left;
-    // else
-    //     parent->right = pred->left; // 20->right = NULL
-    // delete pred;
-    //===============================================
 
     cout << "After: ";
     printInorder(root);

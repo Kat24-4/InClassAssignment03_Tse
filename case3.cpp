@@ -29,30 +29,16 @@ void freeTree(Node* node) {
 }
 
 int main() {
-    // Tree T
-    // Node* root = new Node(40);
-    // root->left = new Node(20);
-    // root->right = new Node(60);
-    // root->left->left = new Node(10);
-    // root->left->right = new Node(30);
-    // root->right->left = new Node(50);
-    // root->right->right = new Node(70);
-
     // Tree P
-    // Node* root = new Node(45);
-    // root->left = new Node(25);
-    // root->right = new Node(65);
-    // root->left->left = new Node(15);
-    // root->left->right = new Node(35);
-    // root->right->left = new Node(55);
-    // root->right->right = new Node(75);
-    // root->left->right->left = new Node(30);
-    // root->right->left->right = new Node(60);
-
-    //Question 4 Tree
-    Node* root = new Node(10);
-    root->right = new Node(20);
-    root->right->right = new Node(30);
+    Node* root = new Node(45);
+    root->left = new Node(25);
+    root->right = new Node(65);
+    root->left->left = new Node(15);
+    root->left->right = new Node(35);
+    root->right->left = new Node(55);
+    root->right->right = new Node(75);
+    root->left->right->left = new Node(30);
+    root->right->left->right = new Node(60);
 
     cout << "Before: ";
     printInorder(root);
@@ -63,7 +49,7 @@ int main() {
     // 1. search for value, remembering its parent
     Node* parent = nullptr;
     Node* cur = root;
-    int key = 10;
+    int key = 55;
     while (cur != nullptr && cur->data != key) {
         parent = cur;
         if (key < cur->data) cur = cur->left;
@@ -71,9 +57,8 @@ int main() {
     }
     // 2. its only child takes its place
     Node* child = (cur->left != nullptr) ? cur->left : cur->right;
-    if (cur == root)              root = child; 
-    else if (parent->left == cur) parent->left = child;
-    else                          parent->right = child; 
+    if (parent->left == cur) parent->left = child;
+    else                     parent->right = child; 
     delete cur;
 
     cout << "After: ";
